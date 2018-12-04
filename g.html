@@ -1,0 +1,72 @@
+<!DOCTYPE html>  22
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Gästlista</title>
+    <script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
+    <link rel="stylesheet" href="g.css">
+  </head>
+  <body>
+
+    <div id="app">
+      <div class="container">
+
+        <div class="row" :style="appStyles">
+          <div class="col-sm-12 text-center">
+            <h1>Gästlista</h1>
+          </div>
+        </div>
+
+        <div class="row" :style="appStyles">
+          <div class="col-sm-12">
+            <div class="card">
+              <div class="card-header">
+                {{ event.eventDate }}
+
+              </div>
+              <div class="card-block">
+                <h4 class="card-title" v-once>{{ event.eventTitle }}</h4><hr>
+                <p class="card-text">{{ event.eventDescription }}</p>
+                <p class="card-text"v-html="event.signUpText"></p>
+
+                <form class="form-inline" @submit.prevent="formSubmitted">
+                  <input type="text" id="nameInput" class="form-control mb-2 mr-sm-0" placeholder="Skriv här" v-model="newNameText">
+                  <input type="submit" class="btn btn-primary"></input>
+                </form>
+                {{ newNameText }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" :style="appStyles">
+          <div class="col-sm-12">
+            <div class="card">
+              <div class="card-header">
+                Kommer <span id="kommer">({{ guestName.length }} / {{ eventCapacity }})</span>
+                <br>
+                <progress :style="{width: eventCapacityPercentage + '%'}"></progress>
+              </div>
+              <div class="card-block">
+                <div v-if="guestName.length > 0">
+                  <div class="success"
+                  v-for="name in guestName">
+
+                  {{ name + ' är med' }}
+                  <!--
+                  {{ 5/2 }}
+                  {{ Math.random() }} -->
+                </div>
+                </div>
+                <div v-else>
+                  <h4>inga namn än</h4>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="g.js"></script>
+</html>
