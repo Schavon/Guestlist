@@ -12,13 +12,13 @@
       <div class="container">
 
         <div class="row" :style="appStyles">
-          <div class="col-sm-12 text-center">
+          <div>
             <h1>Gästlista</h1>
           </div>
         </div>
 
         <div class="row" :style="appStyles">
-          <div class="col-sm-12">
+          <div>
             <div class="card">
               <div class="card-header">
                 {{ event.eventDate }}
@@ -30,7 +30,7 @@
                 <p class="card-text"v-html="event.signUpText"></p>
 
                 <form class="form-inline" @submit.prevent="formSubmitted">
-                  <input type="text" id="nameInput" class="form-control mb-2 mr-sm-0" placeholder="Skriv här" v-model="newNameText">
+                  <input type="text" id="nameInput" placeholder="Skriv här" v-model="newNameText">
                   <input type="submit" class="btn btn-primary"></input>
                 </form>
                 {{ newNameText }}
@@ -39,7 +39,7 @@
           </div>
         </div>
         <div class="row" :style="appStyles">
-          <div class="col-sm-12">
+          <div>
             <div class="card">
               <div class="card-header">
                 Kommer <span id="kommer">({{ guestName.length }} / {{ eventCapacity }})</span>
